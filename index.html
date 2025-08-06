@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="One Model For All: Partial Diffusion for Unified Try-On and Try-Off in Any Pose. ">
+  <meta name="keywords" content="A flexible and unified virtual try-on framework that enables cross-person and cross-pose garment transfer!">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One Model For All: Partial Diffusion for Unified Try-On and Try-Off in Any Pose</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/dressing.svg ">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title"><span style="
+              font-weight: bold;
+              background: linear-gradient(107deg, #161616, #DD2476, #FF9A44);
+              -webkit-background-clip: text;
+              color: transparent;
+            ">
+      One Model For All
+    </span>: Partial Diffusion for Unified Try-On and Try-Off in Any Pose</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="static/images/teaser.png" alt="" class="wide-image"/>
+
+        <h2 class="content has-text-justified">
+          <p>
+            <b><i>Flexibility: </i></b> OFMA supports person-to-person try-on and cross-identity garment swapping.
+          </p>
+          <p>
+            <b><i>Versatility: </i></b> OMFA handles multi-pose try-on while maintaining identity consistency.
+          </p>
+        </h2>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-2" style="font-family: Comic Sans MS"><div class="x-gradient-font">Abstract</div></h2>
+          <div class="content has-text-justified">
+            <p>
+              Recent diffusion-based approaches have made significant advances in image-based virtual try-on, enabling more realistic and end-to-end garment synthesis. However, most existing methods remain constrained by their reliance on exhibition garments and segmentation masks, as well as their limited ability to handle flexible pose variations. These limitations reduce their practicality in real-world scenarios—for instance, users cannot easily transfer garments worn by one person onto another, and the generated try-on results are typically restricted to the same pose as the reference image. In this paper, we introduce <strong>OMFA</strong> (<em>One Model For All</em>), a unified diffusion framework for both virtual try-on and try-off that operates without the need for exhibition garments and supports arbitrary poses. For example, OMFA enables removing garments from a source person (try-off) and transferring them onto a target person (try-on), while also allowing the generated target to appear in novel poses—even without access to multi-pose images of that person. OMFA is built upon a novel <em>partial diffusion</em> strategy that selectively applies noise and denoising to individual components of the joint input—such as the garment, the person image, or the face—enabling dynamic subtask control and efficient bidirectional garment-person transformation. The framework is entirely mask-free and requires only a single portrait and a target pose as input, making it well-suited for real-world applications. Additionally, by leveraging SMPL-X–based pose conditioning, OMFA supports multi-view and arbitrary-pose try-on from just one image. Extensive experiments demonstrate that OMFA achieves state-of-the-art results on both try-on and try-off tasks, providing a practical and generalizable solution for virtual garment synthesis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-">
+            <h2 class="title is-2" style="font-family: Comic Sans MS"><div class="x-gradient-font">Breaking Down the Process</div></h2>
+            <div class="columns is-centered has-text-justified">
+              <td colspan="3">
+                <img src="static/images/overview.png" alt="" width="1600" />
+              </td>
+            </div>
+            <div class="content has-text-justified">
+              Fig (a) illustrates the pipeline of person-to-person try-on, including two processes of try-off and try-on in one model. Fig (b) shows the model architecture based on the proposed partial diffusion. The model uses the concatenated multiple conditions as inputs, where the noise are add to the person image (try-on stream) or the garment image (try-off stream). 
+              Fig (c) presents the multi-pose try-on support of our framework.
+            </div>
+          </div>
+  </section>
+
+  <section class="section hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column custom-width">
+            <h2 class="title is-2" style="font-family: Comic Sans MS"><div class="x-gradient-font">Comparisons with Try-off Methods</div></h2>
+
+            <div class="content has-text-centered">
+              <td colspan="3">
+                <img src="static/images/cloth_compare.png" alt="" width="2160" />
+                <p>
+                  <b>Qualitative comparisons</b> with state-of-the-art methods of Virtual Try-off.
+                </p>
+              </td>
+            </div>
+          </div>
+        </div>
+  <section class="section hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column custom-width">
+            <h2 class="title is-2" style="font-family: Comic Sans MS"><div class="x-gradient-font">More Try-off Results</div></h2>
+
+            <div class="content has-text-centered">
+              <td colspan="3">
+                <img src="static/images/dresscode_cloth.png" alt="" width="2160" />
+                <p>
+                  <b>Qualitative result</b>  virtual try-off on the DressCode dataset.
+                </p>
+              </td>
+            </div>
+            <div class="content has-text-centered">
+              <td colspan="3">
+                <img src="static/images/deepfashon_cloth.png" alt="" width="2160" />
+                <p>
+                  <b>Qualitative result</b>  virtual try-off on the Deepfashion-MultiModal dataset.
+                </p>
+              </td>
+            </div>
+          </div>
+        </div>
+     
+      </div>
+    </div>
+  </section>
+ 
+
+  <section class="section hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column custom-width">
+            <h2 class="title is-2" style="font-family: Comic Sans MS"><div class="x-gradient-font">Comparisons with Try-on Methods</div></h2>
+
+            <div class="content has-text-centered">
+              <td colspan="3">
+                <img src="static/images/compare_vitonhd2.png" alt="" width="2160" />
+                <p>
+                  <b>Qualitative comparisons</b> with state-of-the-art methods of Virtual Try-on.
+                </p>
+              </td>
+            </div>
+          </div>
+        </div>
+
+  <!-- Video grid Extension -->
+  <section class="section hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h2 class="title is-2 has-text-centered" style="font-family: Comic Sans MS"><div class="x-gradient-font">More Virtual Try-on Results</div></h2>
+        <h2 class="title is-4 has-text-centered"><b style="color:#1c702f; font-weight:normal">&#x25B6 </b> Person-to-Person Setting</h2>      
+        <div class="columns is-centered has-text-justified">
+          <td colspan="3">
+              <img src="static/images/example1/0.png" alt="" style="width: 92%; margin-left: 3%;" />
+          </td>
+        </div>
+        <div class="container is-max-desktop">
+          <div class="hero-body">
+            <div id="results-carousel" class="carousel results-carousel" data-slides-to-show="1">
+              <img loading="lazy" src="static/images/example1/person1.png" style="width: 100%;">
+              <img loading="lazy" src="static/images/example1/person2.png" style="width: 100%;">
+              <img loading="lazy" src="static/images/example1/person3.png" style="width: 100%;">
+              <img loading="lazy" src="static/images/example1/person4.png" style="width: 100%;">
+              <img loading="lazy" src="static/images/example1/person5.png" style="width: 100%;">
+            </div>
+          </div>
+        </div> 
+
+        <div style="height: 30px;"></div>
+
+        <div class="columns is-centered has-text-justified">
+          <td colspan="3">
+              <img src="static/images/example2/0.png" alt="" style="width: 92%; margin-left: 3%;" />
+          </td>
+        </div>
+        <div class="container is-max-desktop">
+          <div class="hero-body">
+            <div id="results-carousel" class="carousel results-carousel" data-slides-to-show="1">
+              <img loading="lazy" src="static/images/example2/person1.png" style="width: 100%;">
+              <img loading="lazy" src="static/images/example2/person2.png" style="width: 100%;">
+              <img loading="lazy" src="static/images/example2/person3.png" style="width: 100%;">
+              <img loading="lazy" src="static/images/example2/person4.png" style="width: 100%;">
+              <img loading="lazy" src="static/images/example2/person5.png" style="width: 100%;">
+            </div>
+          </div>
+        </div> 
+
+        <div style="height: 50px;"></div>
+        <h2 class="title is-4 has-text-centered"><b style="color:#1c702f; font-weight:normal">&#x25B6 </b> Multi-pose Setting</h2>
+        <div class="columns is-centered has-text-justified">
+          <td colspan="3">
+              <img src="static/images/changepose1.gif" alt="" width="2160" />
+          </td>
+        </div>
+        <p style="margin-bottom: 5px;"><br></p>
+        <div class="columns is-centered has-text-justified">
+          <td colspan="3">
+              <img src="static/images/changepose2.gif" alt="" width="2160" />
+          </td>
+        </div>
+        <p style="margin-bottom: 5px;"><br></p>
+
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>
