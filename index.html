@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="One Model For All: Partial Diffusion for Unified Try-On and Try-Off in Any Pose. ">
+        content="One Model for All: Unified Try-On and Try-Off in Any Pose via LLM-Inspired Bidirectional Tweedie Diffusion. ">
   <meta name="keywords" content="A flexible and unified virtual try-on framework that enables cross-person and cross-pose garment transfer!">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>One Model For All: Partial Diffusion for Unified Try-On and Try-Off in Any Pose</title>
+  <title>One Model for All: Unified Try-On and Try-Off in Any Pose via LLM-Inspired Bidirectional Tweedie Diffusion</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -58,7 +58,7 @@
               color: transparent;
             ">
       One Model For All
-    </span>: Partial Diffusion for Unified Try-On and Try-Off in Any Pose</h1>
+    </span>: Unified Try-On and Try-Off in Any Pose via LLM-Inspired Bidirectional Tweedie Diffusion</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block"> Jinxi Liu<sup>1</sup>,</span>
@@ -72,8 +72,6 @@
               <span class="author-block"><sup>2</sup>X-Era AI Lab</span>&nbsp
               <span class="author-block"><sup>3</sup> Guangdong Key Laboratory of Big Data Analysis and Processing</span>&nbsp
             </div>
-
-        </span>
               </div>
             </div>
           </div>
@@ -107,7 +105,7 @@
           <h2 class="title is-2" style="font-family: Comic Sans MS"><div class="x-gradient-font">Abstract</div></h2>
           <div class="content has-text-justified">
             <p>
-              Recent diffusion-based approaches have made significant advances in image-based virtual try-on, enabling more realistic and end-to-end garment synthesis. However, most existing methods remain constrained by their reliance on exhibition garments and segmentation masks, as well as their limited ability to handle flexible pose variations. These limitations reduce their practicality in real-world scenarios—for instance, users cannot easily transfer garments worn by one person onto another, and the generated try-on results are typically restricted to the same pose as the reference image. In this paper, we introduce <strong>OMFA</strong> (<em>One Model For All</em>), a unified diffusion framework for both virtual try-on and try-off that operates without the need for exhibition garments and supports arbitrary poses. For example, OMFA enables removing garments from a source person (try-off) and transferring them onto a target person (try-on), while also allowing the generated target to appear in novel poses—even without access to multi-pose images of that person. OMFA is built upon a novel <em>partial diffusion</em> strategy that selectively applies noise and denoising to individual components of the joint input—such as the garment, the person image, or the face—enabling dynamic subtask control and efficient bidirectional garment-person transformation. The framework is entirely mask-free and requires only a single portrait and a target pose as input, making it well-suited for real-world applications. Additionally, by leveraging SMPL-X–based pose conditioning, OMFA supports multi-view and arbitrary-pose try-on from just one image. Extensive experiments demonstrate that OMFA achieves state-of-the-art results on both try-on and try-off tasks, providing a practical and generalizable solution for virtual garment synthesis.
+              Recent diffusion-based approaches have made significant advances in image-based virtual try-on, enabling more realistic and end-to-end garment synthesis. However, most existing methods remain constrained by their reliance on exhibition garments and segmentation masks, as well as their limited ability to handle flexible pose variations. These limitations reduce their practicality in real-world scenarios—for instance, users cannot easily transfer garments worn by one person onto another, and the generated try-on results are typically restricted to the same pose as the reference image. In this paper, we introduce <strong>OMFA</strong> (<em>One Model For All</em>), a unified diffusion framework for both virtual try-on and try-off that operates without the need for exhibition garments and supports arbitrary poses. OMFA is inspired by language modeling, where generation is guided by conditioning prompts (e.g., prompting with a garment to obtain the try-on result). However, our framework differs fundamentally from large language models (LLMs) in two key aspects. First, it employs a bidirectional modeling paradigm that symmetrically allows prompting either from the garment to generate try-on results or from the dressed person to recover the try-off garment. Second, it strictly adheres to Tweedie's formula, enabling faithful estimation of the underlying data distribution during the denoising process. Instead of imposing lower body constraints, OMFA is an entirely mask-free framework that requires only a single portrait and a target garment as input, and is designed to support flexible outfit combinations and cross-person garment transfer, making it better aligned with practical usage scenarios. Additionally, by leveraging SMPL-X-based pose conditioning, OMFA supports multi-view and arbitrary-pose try-on from just one image. Extensive experiments demonstrate that OMFA achieves state-of-the-art results on both try-on and try-off tasks, providing a practical and generalizable solution for virtual garment synthesis.
             </p>
           </div>
         </div>
@@ -120,15 +118,14 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
           <div class="column is-">
-            <h2 class="title is-2" style="font-family: Comic Sans MS"><div class="x-gradient-font">Breaking Down the Process</div></h2>
+            <h2 class="title is-2" style="font-family: Comic Sans MS; margin-bottom: 4rem;"><div class="x-gradient-font">Breaking Down the Process</div></h2>
             <div class="columns is-centered has-text-justified">
               <td colspan="3">
                 <img src="static/images/overview.png" alt="" width="1600" />
               </td>
             </div>
             <div class="content has-text-justified">
-              Fig (a) illustrates the pipeline of person-to-person try-on, including two processes of try-off and try-on in one model. Fig (b) shows the model architecture based on the proposed partial diffusion. The model uses the concatenated multiple conditions as inputs, where the noise are add to the person image (try-on stream) or the garment image (try-off stream). 
-              Fig (c) presents the multi-pose try-on support of our framework.
+              Fig (a) illustrates the pipeline of person-to-person try-on, including two processes of try-off and try-on in one model. Fig (b) depicts a model design based on the LLM-inspired bidirectional diffusion. The model's inputs are the latent token sequence, with noise added to the person image (try-on stream) or the garment image (try-off stream). Fig (c) presents the multi-pose try-on support of our framework.
             </div>
           </div>
   </section>
