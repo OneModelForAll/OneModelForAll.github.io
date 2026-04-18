@@ -105,7 +105,7 @@
           <h2 class="title is-2" style="font-family: Comic Sans MS"><div class="x-gradient-font">Abstract</div></h2>
           <div class="content has-text-justified">
             <p>
-              Recent diffusion-based approaches have made significant advances in image-based virtual try-on, enabling more realistic and end-to-end garment synthesis. However, most existing methods remain constrained by their reliance on exhibition garments and segmentation masks, as well as their limited ability to handle flexible pose variations. These limitations reduce their practicality in real-world scenarios—for instance, users cannot easily transfer garments worn by one person onto another, and the generated try-on results are typically restricted to the same pose as the reference image. In this paper, we introduce <strong>OMFA</strong> (<em>One Model For All</em>), a unified diffusion framework for both virtual try-on and try-off that operates without the need for exhibition garments and supports arbitrary poses. OMFA is inspired by language modeling, where generation is guided by conditioning prompts (e.g., prompting with a garment to obtain the try-on result). However, our framework differs fundamentally from large language models (LLMs) in two key aspects. First, it employs a bidirectional modeling paradigm that symmetrically allows prompting either from the garment to generate try-on results or from the dressed person to recover the try-off garment. Second, it strictly adheres to Tweedie's formula, enabling faithful estimation of the underlying data distribution during the denoising process. Instead of imposing lower body constraints, OMFA is an entirely mask-free framework that requires only a single portrait and a target garment as input, and is designed to support flexible outfit combinations and cross-person garment transfer, making it better aligned with practical usage scenarios. Additionally, by leveraging SMPL-X-based pose conditioning, OMFA supports multi-view and arbitrary-pose try-on from just one image. Extensive experiments demonstrate that OMFA achieves state-of-the-art results on both try-on and try-off tasks, providing a practical and generalizable solution for virtual garment synthesis.
+              Recent diffusion-based approaches have made significant advances in image-based virtual try-on, enabling more realistic and end-to-end garment synthesis. However, most existing methods remain constrained by their reliance on exhibition garments and segmentation masks, as well as their limited ability to handle flexible pose variations. These limitations reduce their practicality in real-world scenarios—for instance, users cannot easily transfer garments worn by one person onto another, and the generated try-on results are typically restricted to the same pose as the reference image. In this paper, we introduce <b>OMFA</b> (<i>One Model For All</i>), a unified diffusion framework for both virtual try-on and try-off that operates without the need for exhibition garments and supports arbitrary poses. OMFA is inspired by the mask-based paradigm of discrete diffusion language models and unifies try-on and try-off within a bidirectional framework. It is built upon a Bidirectional Tweedie Diffusion process for target-selective denoising in latent space. Instead of imposing lower body constraints, OMFA is an entirely mask-free framework that requires only a single portrait and a target garment as inputs, and is designed to support flexible outfit combinations and cross-person garment transfer, making it better aligned with practical usage scenarios. Additionally, by leveraging SMPL-X–based pose conditioning, OMFA supports multi-view and arbitrary-pose try-on from just one image. Extensive experiments demonstrate that OMFA achieves state-of-the-art results on both try-on and try-off tasks, providing a practical and generalizable solution for virtual garment synthesis.
             </p>
           </div>
         </div>
@@ -125,7 +125,7 @@
               </td>
             </div>
             <div class="content has-text-justified">
-              Fig (a) illustrates the pipeline of person-to-person try-on, including two processes of try-off and try-on in one model. Fig (b) depicts a model design based on the LLM-inspired bidirectional diffusion. The model's inputs are the latent token sequence, with noise added to the person image (try-on stream) or the garment image (try-off stream). Fig (c) presents the multi-pose try-on support of our framework.
+              Fig (a) illustrates the pipeline of person-to-person try-on, including two processes of try-off and try-on in one model. Fig (b) depicts a model design based on the Tweedie bidirectional diffusion. The model's inputs are the latent token sequence, with noise added to the dressed-person image (try-on stream) or the garment image (try-off stream), while the remaining latents are retained as observed conditions. Fig (c) presents the multi-pose try-on support of our framework.
             </div>
           </div>
   </section>
@@ -256,6 +256,40 @@
       </div>
     </div>
   </section>
+
+  
+  <footer class="footer">
+    <div class="container">
+      <!-- <div class="content has-text-centered">
+        <a class="icon-link"
+           href="./static/videos/nerfies_paper.pdf">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div> -->
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This project is intended solely for academic research and effect demonstration. No commercial benefits are derived from it. Most models and clothing images used are from internet and public dataset (VITON-HD). 
+              All images and brands are the property of their respective owners.
+            </p>
+            <!-- <p>
+              This website is licensed under a <a rel="license"
+                                                  href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p> -->
+            <p>
+              Website source code based on the <a
+                href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 
